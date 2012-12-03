@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="grid_padding">8dip</dimen>
+	<dimen name="grid1">8dip</dimen>
+	<dimen name="grid2">12dip</dimen>
+	<dimen name="grid3">16dip</dimen>
+	<dimen name="grid4">24dip</dimen>
+	<dimen name="grid5">48dip</dimen>
+</resources>
