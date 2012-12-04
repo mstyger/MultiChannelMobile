@@ -1,21 +1,35 @@
 package ch.zh.dipima.multichannelmobile.message;
 
+import android.app.Activity;
+import android.view.View;
 import ch.zh.dipima.multichannelmobile.MainActivity;
-import android.util.Log;
+import ch.zh.dipima.multichannelmobile.R;
 
 public class Email extends Message implements Validatable {
+	
 	public Email() {
+		super();
 		setMsgType(MainActivity.MESSAGE_TYPE_EMAIL);
 	}
 
 	@Override
-	public void drawMessageFields() {
-		Log.d("printr", "Hier kommen dann die Email Eingabefelder");
+	public void drawMessageGUI(Activity a) {
+		a.setTitle(a.getResources().getString(R.string.title_activity_write_email));
+		a.setContentView(R.layout.activity_write_email);
 	}
 
 	@Override
 	public boolean validate() {
-		// TODO Auto-generated method stub
+		//todo: message validieren
 		return false;
+	}
+
+	@Override
+	public void sendMessage(View v) {
+		if(validate()) {
+			//send message
+		} else {
+			// throw error because text not valid
+		}
 	}
 }

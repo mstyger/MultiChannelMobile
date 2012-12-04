@@ -1,7 +1,10 @@
 package ch.zh.dipima.multichannelmobile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.message.Message;
 
 public class WriteMessage extends Activity {
@@ -10,7 +13,6 @@ public class WriteMessage extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_message);
         
         final Bundle extras = getIntent().getExtras();
 		
@@ -18,22 +20,24 @@ public class WriteMessage extends Activity {
 			int msgType = extras.getInt(MainActivity.MESSAGE_TYPE);
 			msg = Message.factory(msgType);
 			
-			switch(msg.getMsgType()) {
-			case MainActivity.MESSAGE_TYPE_EMAIL:
-				setTitle(getResources().getString(R.string.title_activity_write_email));
-				break;
-			case MainActivity.MESSAGE_TYPE_SMS:
-				setTitle(getResources().getString(R.string.title_activity_write_sms));
-				break;
-			case MainActivity.MESSAGE_TYPE_MMS:
-				setTitle(getResources().getString(R.string.title_activity_write_mms));
-				break;
-			case MainActivity.MESSAGE_TYPE_PRINT:
-				setTitle(getResources().getString(R.string.title_activity_write_print));
-				break;
+			if(msg != null) {
+				msg.drawMessageGUI(this);
 			}
-			
-			msg.drawMessageFields();
+		} else {
+			Toast.makeText(getApplicationContext(), "Bitte Nachrichtentyp wählen.", Toast.LENGTH_LONG).show();
 		}
     }
+	
+	public void sendMessage(View v) {
+		msg.sendMessage(v);
+	}
+
+	@Override
+	public void onBackPressed() {
+		Intent ihome = new Intent().setClass(getApplicationContext(),
+				MainActivity.class).setFlags(
+				Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		startActivity(ihome);
+		return;
+	}
 }

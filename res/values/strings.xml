@@ -19,6 +19,10 @@
     <string name="btn_tx_email">Email senden</string>
     <string name="btn_tx_sms">SMS senden</string>
     <string name="btn_tx_mms">MMS senden</string>
-    <string name="btn_tx_print">Nachricht ausdrucken</string>
+    <string name="btn_tx_print">Nachricht zum Audrucken</string>
+    
+    <!-- Sonstige Texte -->
+    <string name="tx_recipient">Empfänger:</string>
+    <string name="tx_message">Nachricht:</string>
 
 </resources>
