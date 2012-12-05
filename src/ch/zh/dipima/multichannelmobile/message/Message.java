@@ -11,14 +11,18 @@ public abstract class Message {
 	
 	private String errorMessage = "";
 	
-	protected int sendState;
-	protected int msgType;
+	private int sendState;
+	private int msgType;
 	private long msgTime;
 	
 	public Message() {
 		setMsgTime(System.currentTimeMillis());
 		setSentState(Message.MESSAGE_STATE_INITIALIZED);
 	}
+	
+	/**
+	 * Message Factory to create object
+	 */
 	
 	public static Message factory(int msgType) {
 		Message msg = null;
@@ -42,41 +46,61 @@ public abstract class Message {
 		return msg;
 	}
 	
+	// Write log
 	protected void writeLog() {
 		//TOTO: write date, messagetype and message to logfile
 	}
+	
+	/**
+	 * Error Message 
+	 */
 	
 	public String getErrorMessage() {
 		return errorMessage;
 	}
 
-	public void setErrorMessage(String errorMessage) {
+	protected void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+	
+	/**
+	 * Message State
+	 */
 	
 	public int getSentState() {
 		return sendState;
 	}
 
-	public void setSentState(int sendState) {
+	protected void setSentState(int sendState) {
 		this.sendState = sendState;
 	}
+	
+	/**
+	 * Message Type
+	 */
 	
 	public int getMsgType() {
 		return msgType;
 	}
 
-	public void setMsgType(int msgType) {
+	protected void setMsgType(int msgType) {
 		this.msgType = msgType;
 	}
+	
+	/**
+	 * Message Time
+	 */
 	
 	public long getMsgTime() {
 		return msgTime;
 	}
 
-	public void setMsgTime(long msgTime) {
+	protected void setMsgTime(long msgTime) {
 		this.msgTime = msgTime;
 	}
+	
+	
+	/************* Abstract Methods **************/
 	
 	// methods to be overriden
 	public abstract void drawMessageGUI(Activity a);

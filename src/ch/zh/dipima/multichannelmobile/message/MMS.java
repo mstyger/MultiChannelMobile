@@ -32,4 +32,10 @@ public class MMS extends Message implements Validatable {
 			// throw error because text not valid
 		}
 	}
+
+	@Override
+	public void showErrorMessage() {
+		// TODO Auto-generated method stub
+		
+	}
 }

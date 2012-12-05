@@ -38,4 +38,10 @@ public class SMS extends Message implements Validatable {
 		}
 		writeLog();
 	}
+
+	@Override
+	public void showErrorMessage() {
+		// TODO Auto-generated method stub
+		
+	}
 }
