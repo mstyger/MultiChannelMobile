@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import ch.zh.dipima.multichannelmobile.MainActivity;
 import ch.zh.dipima.multichannelmobile.R;
+import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class Email extends Message implements Validatable {
 	
@@ -34,7 +35,7 @@ public class Email extends Message implements Validatable {
 	}
 
 	@Override
-	public void showErrorMessage() {
+	public void showErrorMessage(ErrorInMessageException e) {
 		// TODO Auto-generated method stub
 		
 	}

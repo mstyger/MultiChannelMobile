@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.MainActivity;
 import ch.zh.dipima.multichannelmobile.R;
+import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class SMS extends Message implements Validatable {
 	
@@ -40,7 +41,7 @@ public class SMS extends Message implements Validatable {
 	}
 
 	@Override
-	public void showErrorMessage() {
+	public void showErrorMessage(ErrorInMessageException e) {
 		// TODO Auto-generated method stub
 		
 	}
