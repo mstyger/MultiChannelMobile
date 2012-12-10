@@ -16,23 +16,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="phone" 
-        />
+        android:inputType="phone">
+        <requestFocus />
+    </EditText>
     
     <TextView 
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:text="@string/tx_message"
-        />
-
+    	/>
+    
     <EditText
         android:id="@+id/sms_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textShortMessage">
-        <requestFocus />
-    </EditText>
+        android:inputType="textShortMessage"
+        />
 
     <Button
         android:id="@+id/btn_send_sms"

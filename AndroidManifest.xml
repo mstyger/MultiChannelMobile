@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".Info"></activity>
         <activity android:name=".WriteMessage"></activity>
+        <activity android:name=".ShowLog"></activity>
     </application>
 
 </manifest>

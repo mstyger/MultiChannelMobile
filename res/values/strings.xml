@@ -10,6 +10,7 @@
     <string name="title_activity_write_sms">SMS</string>
     <string name="title_activity_write_mms">MMS</string>
     <string name="title_activity_write_print">Print</string>
+    <string name="title_activity_log">Log anzeigen</string>
     
     <!-- Text -->
     <string name="tx_info">Diese App wurde im Ramen. blabla Didi, Pius, Marcel todo</string>
@@ -20,9 +21,14 @@
     <string name="btn_tx_sms">SMS senden</string>
     <string name="btn_tx_mms">MMS senden</string>
     <string name="btn_tx_print">Nachricht zum Audrucken</string>
+    <string name="btn_find_attachment">Anhang auswählen</string>
+    <string name="btn_tx_showlog">Nachrichtenlog anzeigen</string>
     
     <!-- Sonstige Texte -->
     <string name="tx_recipient">Empfänger:</string>
     <string name="tx_message">Nachricht:</string>
-
+	<string name="tx_subject">Betreff:</string>
+	<string name="tx_attachment">Anhang:</string>
+	<string name="tl_log">Log:</string>
+	
 </resources>

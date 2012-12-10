@@ -66,4 +66,13 @@ public class MainActivity extends Activity {
     	}
 		startActivity(info);
     }
+    
+    public void showLog(View v) {
+    	Intent info = new Intent().setClass(
+    			getApplicationContext(),
+				ShowLog.class).setFlags(
+				Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    	
+		startActivity(info);
+    }
 }

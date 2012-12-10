@@ -46,5 +46,14 @@
         android:text="@string/btn_tx_print"
         android:onClick="setType"
         />
+    
+    <Button
+        android:id="@+id/btn_msg_showlog"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:padding="@dimen/grid_padding"
+        android:text="@string/btn_tx_showlog"
+        android:onClick="showLog"
+        />
 
 </LinearLayout>
