@@ -21,4 +21,8 @@ public class ShowLog extends Activity {
 		startActivity(ihome);
 		return;
 	}
+	
+	private void displayLog() {
+		
+	}
 }
