@@ -8,7 +8,9 @@ import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.message.Message;
 
 public class WriteMessage extends Activity {
-	private static final int PICKFILE_RESULT_CODE = 1;
+	public static final int PICKFILE_RESULT_CODE = 1;
+	public static final int SEND_REQUEST_CODE = 2;
+	
 	private Message msg;
 
 	@Override
@@ -45,13 +47,18 @@ public class WriteMessage extends Activity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+ 
 		switch (requestCode) {
 		case PICKFILE_RESULT_CODE:
 			if (resultCode == RESULT_OK) {
 				String filePath = data.getData().getPath();
 				msg.addAttachment(filePath);
 			}
+			break;
+		case SEND_REQUEST_CODE:
+			//leider returnt das system immer 0 als resultCode, egal, ob der benutzer abbricht oder das mail wirklich sendet
+			Toast.makeText(this, "Nachricht erfolgreich an Android weitergereicht.", Toast.LENGTH_SHORT).show();
 			break;
 		}
 	}

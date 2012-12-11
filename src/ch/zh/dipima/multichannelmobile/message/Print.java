@@ -9,6 +9,8 @@ import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class Print extends Message implements Validatable {
 	
+	private String body;
+
 	public Print(Activity a) {
 		super();
 		setMsgType(MainActivity.MESSAGE_TYPE_PRINT);
@@ -18,8 +20,9 @@ public class Print extends Message implements Validatable {
 	@Override
 	public boolean validate() throws ErrorInMessageException {
 		EditText bodyView = (EditText) a.findViewById(R.id.print_body);
+		body = bodyView.getText().toString();
 		
-		if(null == bodyView || bodyView.getText().toString().equalsIgnoreCase("")) {
+		if(body.equalsIgnoreCase("")) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGBODY);
 		} else {
@@ -42,7 +45,7 @@ public class Print extends Message implements Validatable {
 	public void sendMessage() {
 		try {
 			if(validate()) {
-				//todo send message
+				//todo really send to printer
 				setSentState(MESSAGE_STATE_SENT);
 				Toast.makeText(a.getBaseContext(), "Print erfolgreich versendet.", Toast.LENGTH_LONG).show();
 			}

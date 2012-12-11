@@ -1,15 +1,20 @@
 package ch.zh.dipima.multichannelmobile.message;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.EditText;
 import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.MainActivity;
 import ch.zh.dipima.multichannelmobile.R;
+import ch.zh.dipima.multichannelmobile.WriteMessage;
 import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class SMS extends Message implements Validatable {
 	
 	private static final int MAX_LENGTH = 30;
+	private String recipient;
+	private String body;
 
 	public SMS(Activity a) {
 		super();
@@ -22,13 +27,16 @@ public class SMS extends Message implements Validatable {
 		EditText recipientView = (EditText) a.findViewById(R.id.sms_recipient);
 		EditText bodyView = (EditText) a.findViewById(R.id.sms_body);
 		
-		if (bodyView.getText().length() > SMS.MAX_LENGTH) {
+		recipient = recipientView.getText().toString();
+		body = bodyView.getText().toString();
+		
+		if (body.length() > SMS.MAX_LENGTH) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_TOOLONG);
-		} else if(null == recipientView || recipientView.getText().toString().equalsIgnoreCase("")) {
+		} else if(recipient.equalsIgnoreCase("")) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGRECIPIENT);
-		} else if(null == bodyView || bodyView.getText().toString().equalsIgnoreCase("")) {
+		} else if(body.equalsIgnoreCase("")) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGBODY);
 		} else {
@@ -51,9 +59,20 @@ public class SMS extends Message implements Validatable {
 	public void sendMessage() {
 		try {
 			if(validate()) {
-				//todo send message
 				setSentState(MESSAGE_STATE_SENT);
-				Toast.makeText(a.getBaseContext(), "SMS erfolgreich versendet.", Toast.LENGTH_LONG).show();
+				
+				Uri smsUri = Uri.parse("smsto:" + recipient);
+				final Intent intent = new Intent(Intent.ACTION_VIEW, smsUri);
+				intent.putExtra("sms_body", body);
+				intent.setData(Uri.parse("smsto:" + recipient));
+				intent.putExtra("address", recipient);
+				intent.setType("vnd.android-dir/mms-sms");
+		        
+		        try {
+		        	a.startActivityForResult(Intent.createChooser(intent, "Send SMS..."), WriteMessage.SEND_REQUEST_CODE); 
+	        	} catch (android.content.ActivityNotFoundException ex) {
+	        	   Toast.makeText(a, "Kein SMS-Client gefunden.", Toast.LENGTH_SHORT).show();
+	        	}
 			}
 		} catch (ErrorInMessageException e) {
 			setSentState(MESSAGE_STATE_NOTSENT);

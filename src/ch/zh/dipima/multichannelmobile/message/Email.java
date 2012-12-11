@@ -1,14 +1,21 @@
 package ch.zh.dipima.multichannelmobile.message;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.MainActivity;
 import ch.zh.dipima.multichannelmobile.R;
+import ch.zh.dipima.multichannelmobile.WriteMessage;
 import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class Email extends Message implements Validatable {
-	
+	private String recipient;
+	private String subject;
+	private String body;
+	private String attachment = "";
+
 	public Email(Activity a) {
 		super();
 		setMsgType(MainActivity.MESSAGE_TYPE_EMAIL);
@@ -20,14 +27,20 @@ public class Email extends Message implements Validatable {
 		EditText recipientView = (EditText) a.findViewById(R.id.email_recipient);
 		EditText subjectView = (EditText) a.findViewById(R.id.email_subject);
 		EditText bodyView = (EditText) a.findViewById(R.id.email_body);
+		TextView attachmentView = (TextView) a.findViewById(R.id.file_attachment);
 		
-		if(null == recipientView || recipientView.getText().toString().equalsIgnoreCase("")) {
+		recipient = recipientView.getText().toString();
+		subject = subjectView.getText().toString();
+		body = bodyView.getText().toString();
+		attachment = attachmentView.getText().toString();
+		
+		if(recipient.equalsIgnoreCase("")) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGRECIPIENT);
-		} else if(null == subjectView || subjectView.getText().toString().equalsIgnoreCase("")) {
+		} else if(subject.equalsIgnoreCase("")) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGSUBJECT);
-		} else if(null == bodyView || bodyView.getText().toString().equalsIgnoreCase("")) {
+		} else if(body.equalsIgnoreCase("")) {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGBODY);
 		} else {
@@ -50,9 +63,23 @@ public class Email extends Message implements Validatable {
 	public void sendMessage() {
 		try {
 			if(validate()) {
-				//todo send message
 				setSentState(MESSAGE_STATE_SENT);
-				Toast.makeText(a.getBaseContext(), "Email erfolgreich versendet.", Toast.LENGTH_LONG).show();
+				
+				final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+		        emailIntent.setType("plain/text");
+		        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{recipient});
+		        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+		        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body);
+		        
+		        if(!attachment.equalsIgnoreCase("")) {
+		        	//todo add attachment
+		        }
+		        
+		        try {
+	        	   a.startActivityForResult(Intent.createChooser(emailIntent, "Send Mail..."), WriteMessage.SEND_REQUEST_CODE);
+	        	} catch (android.content.ActivityNotFoundException ex) {
+	        	   Toast.makeText(a, "Kein Emailclient gefunden.", Toast.LENGTH_SHORT).show();
+	        	}
 			}
 		} catch (ErrorInMessageException e) {
 			setSentState(MESSAGE_STATE_NOTSENT);
