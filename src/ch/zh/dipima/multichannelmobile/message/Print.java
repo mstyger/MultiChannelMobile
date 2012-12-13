@@ -53,7 +53,7 @@ public class Print extends Message implements Validatable {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage( e);
 		} finally {
-			writeLog();
+			writeLog("msg to print:" + body);
 		}
 	}
 }

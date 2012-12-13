@@ -83,7 +83,7 @@ public class MMS extends Message implements Validatable {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {
-			writeLog();
+			writeLog("to:" + recipient + "msg:" + body + "attachment:" + attachment);
 		}
 	}
 }
