@@ -13,7 +13,7 @@
     <string name="title_activity_log">Log anzeigen</string>
 
     <!-- Text -->
-    <string name="tx_info">Dieses App ist im Rahmen einer Gruppensemesterarbeit im Herbstsemester 2012 anhand eines Lernauftrages in den Modulen „Java“, sowie „Software Engineering“ an der Hochschule für Wirtschaft Zürich (HWZ) in der Studienrichtung Wirtschaftsinformatik entstanden.\nSinn und Zweck dieses Lernauftrages war es, die erlernten Techniken von Java und UML in die Praxis umzusetzen.\nMit diesem App können Sie Ihre Nachrichten auf folgende Weise versenden: SMS, MMS, Email und Print.\nCopyright, 2012 by Pius Fonseka, Dieter Good, Marcel Styger - BWI-A11 </string>
+    <string name="tx_info">Dieses App ist im Rahmen einer Gruppensemesterarbeit im Herbstsemester 2012 anhand eines Lernauftrages in den Modulen „Java“, sowie „Software Engineering“ an der Hochschule für Wirtschaft Zürich (HWZ) in der Studienrichtung Wirtschaftsinformatik entstanden.\n\nSinn und Zweck dieses Lernauftrages war es, die erlernten Techniken von Java und UML in die Praxis umzusetzen.\n\nMit diesem App können Sie Ihre Nachrichten auf folgende Weise versenden: SMS, MMS, Email und Print.\n\nCopyright, 2012 by Pius Fonseka, Dieter Good, Marcel Styger - BWI-A11 </string>
     <string name="tx_instructions">Wählen Sie den gewünschten Übertragungskanal aus:</string>
 
     <!-- Buttons -->
