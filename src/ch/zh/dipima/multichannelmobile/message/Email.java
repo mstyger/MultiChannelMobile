@@ -85,7 +85,7 @@ public class Email extends Message implements Validatable {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {
-			writeLog("to:" + recipient + "subject:" + subject + "msg:" + body + "attachment:" + attachment);
+			writeLog("#to:" + recipient + "#subject:" + subject + "#msg:" + body + "#attachment:" + attachment);
 		}
 	}
 }

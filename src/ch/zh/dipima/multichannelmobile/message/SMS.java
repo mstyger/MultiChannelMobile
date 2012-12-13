@@ -78,7 +78,7 @@ public class SMS extends Message implements Validatable {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {
-			writeLog("to:" + recipient + "msg:" + body);
+			writeLog("#to:" + recipient + "#msg:" + body);
 		}
 	}
 }
