@@ -6,6 +6,7 @@ public class ErrorInMessageException extends Exception {
 	public static final int ERROR_MISSINGSUBJECT = 2;
 	public static final int ERROR_MISSINGBODY = 3;
 	public static final int ERROR_MISSINGRECIPIENT = 4;
+	public static final int ERROR_INVALIDADRESS = 5;
 
 	private int errorCode = 0;
 
@@ -27,6 +28,9 @@ public class ErrorInMessageException extends Exception {
 			break;
 		case ERROR_MISSINGRECIPIENT:
 			errorMessage = "Empfänger fehlt!";
+			break;
+		case ERROR_INVALIDADRESS:
+			errorMessage = "Ungültiges Format der Email-Adresse";
 			break;
 
 		}
