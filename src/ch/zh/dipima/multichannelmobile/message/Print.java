@@ -7,6 +7,7 @@
 package ch.zh.dipima.multichannelmobile.message;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.MainActivity;
@@ -55,6 +56,12 @@ public class Print extends Message implements Validatable {
 				setSentState(MESSAGE_STATE_SENT);
 				Toast.makeText(a.getBaseContext(), "Print erfolgreich versendet.", Toast.LENGTH_LONG).show();
 				writeLog("#msg:" + body);
+				
+				Intent ihome = new Intent().setClass(a.getApplicationContext(),
+						MainActivity.class).setFlags(
+						Intent.FLAG_ACTIVITY_CLEAR_TOP
+								| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+				a.startActivity(ihome);
 			}
 		} catch (ErrorInMessageException e) {
 			setSentState(MESSAGE_STATE_NOTSENT);
