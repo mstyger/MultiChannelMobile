@@ -49,9 +49,8 @@ public class Email extends Message implements Validatable {
 			throw new ErrorInMessageException(
 					ErrorInMessageException.ERROR_MISSINGBODY);
 		} else {
-			String expression = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-			Pattern pattern = Pattern.compile(expression,
-					Pattern.CASE_INSENSITIVE);
+			String expression = "\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b";
+			Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
 			Matcher matcher = pattern.matcher(recipient);
 			if (!matcher.matches()) {
 				throw new ErrorInMessageException(
