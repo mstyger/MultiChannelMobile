@@ -59,6 +59,11 @@ public class WriteMessage extends Activity {
 		case SEND_REQUEST_CODE:
 			//leider returnt das system immer 0 als resultCode, egal, ob der benutzer abbricht oder das mail wirklich sendet
 			Toast.makeText(this, "Nachricht erfolgreich an Android weitergereicht.", Toast.LENGTH_SHORT).show();
+			Intent ihome = new Intent().setClass(getApplicationContext(),
+					MainActivity.class).setFlags(
+					Intent.FLAG_ACTIVITY_CLEAR_TOP
+							| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+			startActivity(ihome);
 			break;
 		}
 	}
