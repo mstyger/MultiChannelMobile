@@ -12,7 +12,7 @@ import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class SMS extends Message implements Validatable {
 	
-	private static final int MAX_LENGTH = 30;
+	private static final int MAX_LENGTH = 160;
 	private String recipient;
 	private String body;
 
