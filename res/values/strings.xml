@@ -2,7 +2,7 @@
 
     <string name="app_name">MultiChannelMobile</string>
     <string name="menu_info">Info</string>
-    
+
     <!-- Titles -->
     <string name="title_activity_main">MCM Home</string>
     <string name="title_activity_info">Info</string>
@@ -11,11 +11,11 @@
     <string name="title_activity_write_mms">MMS</string>
     <string name="title_activity_write_print">Print</string>
     <string name="title_activity_log">Log anzeigen</string>
-    
+
     <!-- Text -->
-    <string name="tx_info">Diese App wurde im Ramen. blabla Didi, Pius, Marcel todo</string>
-    <string name="tx_instructions">Hier kommen Anweisungen etc [todo]</string>
-    
+    <string name="tx_info">Dieses App ist im Rahmen einer Gruppensemesterarbeit im Herbstsemester 2012 anhand eines Lernauftrages in den Modulen „Java“, sowie „Software Engineering“ an der Hochschule für Wirtschaft Zürich (HWZ) in der Studienrichtung Wirtschaftsinformatik entstanden.\nSinn und Zweck dieses Lernauftrages war es, die erlernten Techniken von Java und UML in die Praxis umzusetzen.\nMit diesem App können Sie Ihre Nachrichten auf folgende Weise versenden: SMS, MMS, Email und Print.\nCopyright, 2012 by Pius Fonseka, Dieter Good, Marcel Styger - BWI-A11 </string>
+    <string name="tx_instructions">Wählen Sie den gewünschten Übertragungskanal aus:</string>
+
     <!-- Buttons -->
     <string name="btn_tx_email">Email senden</string>
     <string name="btn_tx_sms">SMS senden</string>
@@ -23,12 +23,12 @@
     <string name="btn_tx_print">Nachricht zum Audrucken</string>
     <string name="btn_find_attachment">Anhang auswählen</string>
     <string name="btn_tx_showlog">Nachrichtenlog anzeigen</string>
-    
+
     <!-- Sonstige Texte -->
     <string name="tx_recipient">Empfänger:</string>
     <string name="tx_message">Nachricht:</string>
-	<string name="tx_subject">Betreff:</string>
-	<string name="tx_attachment">Anhang:</string>
-	<string name="tl_log">Log:</string>
-	
+    <string name="tx_subject">Betreff:</string>
+    <string name="tx_attachment">Anhang:</string>
+    <string name="tl_log">Log:</string>
+
 </resources>
