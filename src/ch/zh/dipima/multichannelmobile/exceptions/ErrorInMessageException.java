@@ -30,7 +30,7 @@ public class ErrorInMessageException extends Exception {
 			errorMessage = "Empfänger fehlt!";
 			break;
 		case ERROR_INVALIDADRESS:
-			errorMessage = "Ungültiges Format der Email-Adresse";
+			errorMessage = "Ungültiges Format der Email-Adresse!";
 			break;
 
 		}
