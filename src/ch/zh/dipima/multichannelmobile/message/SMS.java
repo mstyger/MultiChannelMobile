@@ -79,12 +79,13 @@ public class SMS extends Message implements Validatable {
 	        	} catch (android.content.ActivityNotFoundException ex) {
 	        	   Toast.makeText(a, "Kein SMS-Client gefunden.", Toast.LENGTH_SHORT).show();
 	        	}
+		        writeLog("#to:" + recipient + "#msg:" + body);
 			}
 		} catch (ErrorInMessageException e) {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {
-			writeLog("#to:" + recipient + "#msg:" + body);
+			//feature todo: switch on message state and perform different action
 		}
 	}
 }

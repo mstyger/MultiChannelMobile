@@ -106,13 +106,14 @@ public class Email extends Message implements Validatable {
 					Toast.makeText(a, "Kein Emailclient gefunden.",
 							Toast.LENGTH_SHORT).show();
 				}
+				writeLog("#to:" + recipient + "#subject:" + subject + "#msg:"
+						+ body + "#attachment:" + attachment);
 			}
 		} catch (ErrorInMessageException e) {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {
-			writeLog("#to:" + recipient + "#subject:" + subject + "#msg:"
-					+ body + "#attachment:" + attachment);
+			//feature todo: switch on message state and perform different action
 		}
 	}
 }

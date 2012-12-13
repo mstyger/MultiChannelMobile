@@ -54,12 +54,13 @@ public class Print extends Message implements Validatable {
 				//todo really send to printer
 				setSentState(MESSAGE_STATE_SENT);
 				Toast.makeText(a.getBaseContext(), "Print erfolgreich versendet.", Toast.LENGTH_LONG).show();
+				writeLog("#msg:" + body);
 			}
 		} catch (ErrorInMessageException e) {
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage( e);
 		} finally {
-			writeLog("#msg:" + body);
+			//feature todo: switch on message state and perform different action
 		}
 	}
 }
