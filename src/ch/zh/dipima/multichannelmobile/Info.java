@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 public class Info extends Activity {
 
+	//this method is called, when activity starts
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,7 @@ public class Info extends Activity {
         setTitle(getResources().getString(R.string.title_activity_info));
     }
 
+    //this method is called, when user clicks on back button
 	@Override
 	public void onBackPressed() {
 		Intent ihome = new Intent().setClass(getApplicationContext(),

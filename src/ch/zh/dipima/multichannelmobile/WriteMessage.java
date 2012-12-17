@@ -14,11 +14,13 @@ import android.widget.Toast;
 import ch.zh.dipima.multichannelmobile.message.Message;
 
 public class WriteMessage extends Activity {
+	//flags for "activities with results" (see method startActivityForResult)
 	public static final int PICKFILE_RESULT_CODE = 1;
 	public static final int SEND_REQUEST_CODE = 2;
 	
 	private Message msg;
 
+	//this method is called, when activity starts
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,29 +43,33 @@ public class WriteMessage extends Activity {
 		}
 	}
 
+	//this method is called, when user clicks on send button
 	public void sendMessage(View v) {
 		msg.sendMessage();
 	}
 
+	//mms and email messages are able to add attachment -> handle here
 	public void findAttachment(View v) {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("file/*");
 		startActivityForResult(intent, PICKFILE_RESULT_CODE);
 	}
 
+	//this method is used as a callback method from previous activities
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
  
 		switch (requestCode) {
+		//add attachment
 		case PICKFILE_RESULT_CODE:
 			if (resultCode == RESULT_OK) {
 				String filePath = data.getData().getPath();
 				msg.addAttachment(filePath);
 			}
 			break;
+		//send message
 		case SEND_REQUEST_CODE:
-			//leider returnt das system immer 0 als resultCode, egal, ob der benutzer abbricht oder das mail wirklich sendet
 			Toast.makeText(this, "Nachricht erfolgreich an Android weitergereicht.", Toast.LENGTH_SHORT).show();
 			Intent ihome = new Intent().setClass(getApplicationContext(),
 					MainActivity.class).setFlags(
@@ -74,6 +80,7 @@ public class WriteMessage extends Activity {
 		}
 	}
 
+	//this method is called, when user clicks on back button
 	@Override
 	public void onBackPressed() {
 		Intent ihome = new Intent().setClass(getApplicationContext(),

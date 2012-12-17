@@ -25,10 +25,12 @@ public class MMS extends Message implements Validatable {
 
 	public MMS(Activity a) {
 		super();
+		//set the type of this message
 		setMsgType(MainActivity.MESSAGE_TYPE_MMS);
 		this.a = a;
 	}
 	
+	//method validate neets to be implemented from interface Validatable
 	@Override
 	public boolean validate() throws ErrorInMessageException {
 		EditText recipientView = (EditText) a.findViewById(R.id.mms_recipient);
@@ -50,21 +52,25 @@ public class MMS extends Message implements Validatable {
 		}
 	}
 	
+	//method showErrorMessage neets to be implemented from interface Validatable
 	@Override
 	public void showErrorMessage(ErrorInMessageException e) {
 		Toast.makeText(a.getBaseContext(), e.getErrorMessage(), Toast.LENGTH_LONG).show();
 	}
 	
+	//method drawMessageGUI neets to be implemented from abstract class Message
 	@Override
 	public void drawMessageGUI() {
 		a.setTitle(a.getResources().getString(R.string.title_activity_write_mms));
 		a.setContentView(R.layout.activity_write_mms);
 	}
 
+	//method sendMessage neets to be implemented from abstract class Message
 	@Override
 	public void sendMessage() {
 		try {
 			if(validate()) {
+				//set send state to sent after a successful validation
 				setSentState(MESSAGE_STATE_SENT);
 				
 				Uri smsUri = Uri.parse("smsto:" + recipient);
@@ -87,6 +93,7 @@ public class MMS extends Message implements Validatable {
 		        writeLog("#to:" + recipient + "#msg:" + body + "#attachment:" + attachment);
 			}
 		} catch (ErrorInMessageException e) {
+			//throw error and set state to "notsent" after unsucessful validation
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {

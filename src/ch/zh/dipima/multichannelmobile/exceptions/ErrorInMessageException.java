@@ -8,18 +8,22 @@ package ch.zh.dipima.multichannelmobile.exceptions;
 
 @SuppressWarnings("serial")
 public class ErrorInMessageException extends Exception {
+	//possible errors
 	public static final int ERROR_TOOLONG = 1;
 	public static final int ERROR_MISSINGSUBJECT = 2;
 	public static final int ERROR_MISSINGBODY = 3;
 	public static final int ERROR_MISSINGRECIPIENT = 4;
 	public static final int ERROR_INVALIDADRESS = 5;
 
+	//actual error code
 	private int errorCode = 0;
 
+	//every error thrown has an errorcode, which is added initially
 	public ErrorInMessageException(int errorCode) {
 		this.errorCode = errorCode;
 	}
 
+	//method to get readable errorcode
 	public String getErrorMessage() {
 		String errorMessage = "";
 		switch (errorCode) {

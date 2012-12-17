@@ -27,10 +27,12 @@ public class Email extends Message implements Validatable {
 
 	public Email(Activity a) {
 		super();
+		//set the type of this message
 		setMsgType(MainActivity.MESSAGE_TYPE_EMAIL);
 		this.a = a;
 	}
 
+	//method validate neets to be implemented from interface Validatable
 	@Override
 	public boolean validate() throws ErrorInMessageException {
 		EditText recipientView = (EditText) a
@@ -66,12 +68,14 @@ public class Email extends Message implements Validatable {
 		}
 	}
 
+	//method showErrorMessage neets to be implemented from interface Validatable
 	@Override
 	public void showErrorMessage(ErrorInMessageException e) {
 		Toast.makeText(a.getBaseContext(), e.getErrorMessage(),
 				Toast.LENGTH_LONG).show();
 	}
 
+	//method drawMessageGUI neets to be implemented from abstract class Message
 	@Override
 	public void drawMessageGUI() {
 		a.setTitle(a.getResources().getString(
@@ -79,10 +83,12 @@ public class Email extends Message implements Validatable {
 		a.setContentView(R.layout.activity_write_email);
 	}
 
+	//method sendMessage neets to be implemented from abstract class Message
 	@Override
 	public void sendMessage() {
 		try {
 			if (validate()) {
+				//set send state to sent after a successful validation
 				setSentState(MESSAGE_STATE_SENT);
 
 				final Intent emailIntent = new Intent(
@@ -95,7 +101,7 @@ public class Email extends Message implements Validatable {
 				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body);
 
 				if (!attachment.equalsIgnoreCase("")) {
-					// todo add attachment
+					//todo add attachment (in version 1.0 it's only added as a string with the path, not actually as a real file)
 				}
 
 				try {
@@ -110,6 +116,7 @@ public class Email extends Message implements Validatable {
 						+ body + "#attachment:" + attachment);
 			}
 		} catch (ErrorInMessageException e) {
+			//throw error and set state to "notsent" after unsucessful validation
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {

@@ -15,31 +15,38 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-    public static final String MESSAGE_TYPE = "msg_type";
+    //key for intent
+	public static final String MESSAGE_TYPE = "msg_type";
     
+	//possible message types
     public static final int MESSAGE_TYPE_EMAIL = 1;
     public static final int MESSAGE_TYPE_SMS = 2;
     public static final int MESSAGE_TYPE_MMS = 3;
     public static final int MESSAGE_TYPE_PRINT = 4;
 
+    //this method is called, when activity starts
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //set layout & title
         setContentView(R.layout.activity_main);
         setTitle(getResources().getString(R.string.title_activity_main));
     }
 
+	//this method is called, when user clicks on menu button
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
     
+    //this method is called, when user selects a menu item
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_info:
+            	//start new activity to show infos
             	Intent info = new Intent().setClass(getApplicationContext(),
     					Info.class).setFlags(
     					Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -50,6 +57,7 @@ public class MainActivity extends Activity {
         }
     }
     
+    //this method is called, when user selcts a messagetpye.
     public void setType(View v) {
     	Intent info = new Intent().setClass(
     			getApplicationContext(),
@@ -73,6 +81,7 @@ public class MainActivity extends Activity {
 		startActivity(info);
     }
     
+    //this user is called, when user wants to see log
     public void showLog(View v) {
     	Intent info = new Intent().setClass(
     			getApplicationContext(),

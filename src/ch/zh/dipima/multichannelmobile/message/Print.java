@@ -20,10 +20,12 @@ public class Print extends Message implements Validatable {
 
 	public Print(Activity a) {
 		super();
+		//set the type of this message
 		setMsgType(MainActivity.MESSAGE_TYPE_PRINT);
 		this.a = a;
 	}
 	
+	//method validate neets to be implemented from interface Validatable
 	@Override
 	public boolean validate() throws ErrorInMessageException {
 		EditText bodyView = (EditText) a.findViewById(R.id.print_body);
@@ -37,21 +39,25 @@ public class Print extends Message implements Validatable {
 		}
 	}
 	
+	//method showErrorMessage neets to be implemented from interface Validatable
 	@Override
 	public void showErrorMessage(ErrorInMessageException e) {
 		Toast.makeText(a.getBaseContext(), e.getErrorMessage(), Toast.LENGTH_LONG).show();
 	}
 	
+	//method drawMessageGUI neets to be implemented from abstract class Message
 	@Override
 	public void drawMessageGUI() {
 		a.setTitle(a.getResources().getString(R.string.title_activity_write_print));
 		a.setContentView(R.layout.activity_write_print);
 	}
 
+	//method sendMessage neets to be implemented from abstract class Message
 	@Override
 	public void sendMessage() {
 		try {
 			if(validate()) {
+				//set send state to sent after a successful validation
 				//todo really send to printer
 				setSentState(MESSAGE_STATE_SENT);
 				Toast.makeText(a.getBaseContext(), "Print erfolgreich versendet.", Toast.LENGTH_LONG).show();
@@ -64,6 +70,7 @@ public class Print extends Message implements Validatable {
 				a.startActivity(ihome);
 			}
 		} catch (ErrorInMessageException e) {
+			//throw error and set state to "notsent" after unsucessful validation
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage( e);
 		} finally {

@@ -19,17 +19,21 @@ import ch.zh.dipima.multichannelmobile.MainActivity;
 import ch.zh.dipima.multichannelmobile.R;
 
 public abstract class Message {
+	//possible states of a message
 	public static final int MESSAGE_STATE_INITIALIZED = 1;
 	public static final int MESSAGE_STATE_SENT = 2;
 	public static final int MESSAGE_STATE_NOTSENT = 3;
 
+	//activity is needed for android specific operations
 	protected Activity a;
 
+	//sendstate, messagetype and messagetime for each message
 	private int sendState;
 	private int msgType;
 	private long msgTime;
 
 	public Message() {
+		//initially set time of creation and set state to initialized
 		setMsgTime(System.currentTimeMillis());
 		setSentState(Message.MESSAGE_STATE_INITIALIZED);
 	}
@@ -94,9 +98,7 @@ public abstract class Message {
 			// Write the string to the file
 			osw.write("Typ: " + msgType + "\nTime: " + time + "\nNachricht: " + msg + "\n---------------------\n");
 
-			/*
-			 * ensure that everything is really written out and close
-			 */
+			//ensure that everything is really written out and close
 			osw.flush();
 			osw.close();
 		} catch (IOException ioe) {
@@ -141,7 +143,7 @@ public abstract class Message {
 		this.msgTime = msgTime;
 	}
 
-	// add attachment
+	// add attachment (get path as string and write to textfield)
 	public void addAttachment(String filePath) {
 		TextView fileField = (TextView) a.findViewById(R.id.file_attachment);
 		if (fileField != null) {
@@ -151,8 +153,9 @@ public abstract class Message {
 
 	/************* Abstract Methods **************/
 
-	// methods to be overriden
+	//every messagetype draws its own GUI
 	public abstract void drawMessageGUI();
 
+	//every messagetype defines its way of how it's sent over android os
 	public abstract void sendMessage();
 }

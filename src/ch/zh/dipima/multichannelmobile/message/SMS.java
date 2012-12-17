@@ -17,17 +17,20 @@ import ch.zh.dipima.multichannelmobile.WriteMessage;
 import ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException;
 
 public class SMS extends Message implements Validatable {
-	
+	//max length of message
 	private static final int MAX_LENGTH = 160;
+	
 	private String recipient;
 	private String body;
 
 	public SMS(Activity a) {
 		super();
+		//set the type of this message
 		setMsgType(MainActivity.MESSAGE_TYPE_SMS);
 		this.a = a;
 	}
 	
+	//method validate neets to be implemented from interface Validatable 
 	@Override
 	public boolean validate() throws ErrorInMessageException {
 		EditText recipientView = (EditText) a.findViewById(R.id.sms_recipient);
@@ -50,21 +53,25 @@ public class SMS extends Message implements Validatable {
 		}
 	}
 	
+	//method showErrorMessage neets to be implemented from interface Validatable
 	@Override
 	public void showErrorMessage(ErrorInMessageException e) {
 		Toast.makeText(a.getBaseContext(), e.getErrorMessage(), Toast.LENGTH_LONG).show();
 	}
 	
+	//method drawMessageGUI neets to be implemented from abstract class Message
 	@Override
 	public void drawMessageGUI() {
 		a.setTitle(a.getResources().getString(R.string.title_activity_write_sms));
 		a.setContentView(R.layout.activity_write_sms);
 	}
 
+	//method sendMessage neets to be implemented from abstract class Message
 	@Override
 	public void sendMessage() {
 		try {
 			if(validate()) {
+				//set send state to sent after a successful validation
 				setSentState(MESSAGE_STATE_SENT);
 				
 				Uri smsUri = Uri.parse("smsto:" + recipient);
@@ -82,6 +89,7 @@ public class SMS extends Message implements Validatable {
 		        writeLog("#to:" + recipient + "#msg:" + body);
 			}
 		} catch (ErrorInMessageException e) {
+			//throw error and set state to "notsent" after unsucessful validation
 			setSentState(MESSAGE_STATE_NOTSENT);
 			showErrorMessage(e);
 		} finally {
