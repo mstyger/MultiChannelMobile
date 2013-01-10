@@ -1,0 +1,56 @@
+<sequence-diagram version="1.0.11" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="ch.zh.dipima.multichannelmobile.MainActivity" project="MultiChannelMobile" 
+    file="/MultiChannelMobile/src/ch/zh/dipima/multichannelmobile/MainActivity.java" binary="false" label="mainActivity" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="93" y="0"/>    
+    <execution id="2">      
+      <position height="84" width="0" x="0" y="78"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="21" width="0" x="0" y="120"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="84" width="0" x="0" y="182"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="21" width="0" x="0" y="224"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="167" width="141" x="5" y="293"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="21" width="7" x="72" y="397"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="ch.zh.dipima.multichannelmobile.Info" project="MultiChannelMobile" 
+    file="/MultiChannelMobile/src/ch/zh/dipima/multichannelmobile/Info.java" binary="false" label="info" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="240" y="0"/>    
+    <execution id="10">      
+      <position height="125" width="141" x="150" y="314"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="21" width="0" x="0" y="366"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="onCreate(android.os.Bundle):void">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="onCreateOptionsMenu(android.view.Menu):boolean">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="9" operation="onOptionsItemSelected(android.view.MenuItem):boolean">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="13" operation="onCreate(android.os.Bundle):void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" operation="onBackPressed():void">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>
+</sequence-diagram>
