@@ -4,13 +4,13 @@
     type="class" autoSize="true">    
     <position height="-1" width="-1" x="347" y="0"/>    
     <execution id="2">      
-      <position height="768" width="0" x="0" y="78"/>    
+      <position height="801" width="0" x="0" y="78"/>    
     </execution>    
     <execution id="4">      
       <position height="21" width="0" x="0" y="120"/>    
     </execution>    
     <execution id="7">      
-      <position height="21" width="7" x="72" y="783"/>    
+      <position height="21" width="7" x="72" y="816"/>    
     </execution>  
   </object>  
   <object id="8" language="java" name="ch.zh.dipima.multichannelmobile.WriteMessage" project="MultiChannelMobile" 
@@ -18,13 +18,13 @@
     type="class" autoSize="true">    
     <position height="-1" width="-1" x="243" y="0"/>    
     <execution id="6">      
-      <position height="673" width="141" x="150" y="152"/>    
+      <position height="706" width="141" x="150" y="152"/>    
     </execution>    
     <execution id="10">      
       <position height="21" width="0" x="0" y="200"/>    
     </execution>    
     <execution id="14">      
-      <position height="21" width="7" x="217" y="757"/>    
+      <position height="21" width="7" x="217" y="769"/>    
     </execution>  
   </object>  
   <object id="15" language="java" name="ch.zh.dipima.multichannelmobile.message.SMS" project="MultiChannelMobile" 
@@ -32,7 +32,7 @@
     type="class" autoSize="true">    
     <position height="-1" width="-1" x="584" y="0"/>    
     <execution id="12">      
-      <position height="571" width="182" x="295" y="228"/>    
+      <position height="583" width="182" x="295" y="228"/>    
     </execution>    
     <execution id="19">      
       <position height="21" width="0" x="0" y="493"/>    
@@ -83,7 +83,7 @@
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="4"/>  
   </message>  
-  <message id="5">    
+  <message id="5" operation="setType(android.view.View):void">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="6"/>  
   </message>  
@@ -111,7 +111,7 @@
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="21"/>  
   </message>  
-  <message id="22" operation="showErrorMessage(ch.zh.dipima.multichannelmobile.exceptions.ErrorInMessageException):void">    
+  <message id="22">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="23"/>  
   </message>  
@@ -119,7 +119,7 @@
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="25"/>  
   </message>  
-  <message id="26" operation="writeLog(java.lang.String):void">    
+  <message id="26" operation="setSentState(int):void">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="27"/>  
   </message>  
@@ -139,7 +139,7 @@
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="29"/>  
   </message>  
-  <message id="38" operation="writeLog(java.lang.String):void">    
+  <message id="38" operation="setSentState(int):void">    
     <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="31"/>  
   </message>  
